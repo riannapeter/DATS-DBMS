@@ -1,0 +1,27 @@
+package com.example.dats.controller;
+
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import com.example.dats.model.User;
+import com.example.dats.repository.UserRepository;
+
+@RestController
+@CrossOrigin(origins = "*")
+public class UserController {
+
+    private final UserRepository repo;
+
+    public UserController(UserRepository repo) {
+        this.repo = repo;
+    }
+
+    @GetMapping("/users")
+    public List<User> getUsers() {
+        return repo.findAll();
+    }
+
+    @PostMapping("/users")
+    public User addUser(@RequestBody User user) {
+        return repo.save(user);
+    }
+}
