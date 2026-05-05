@@ -23,7 +23,7 @@ const PORT = 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "../safetravelfrontend")));
+// app.use(express.static(path.join(__dirname, "../safetravelfrontend")));
 
 app.get("/api/alerts", (req, res) => {
   db.query("SELECT * FROM alerts", (err, results) => {
@@ -78,9 +78,9 @@ app.get("/api/routes", (req, res) => {
 });
 
 // Serve frontend
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../safetravelfrontend/index.html"));
-});
+// app.get("*", (req, res) => {
+// res.sendFile(path.join(__dirname, "../safetravelfrontend/index.html"));
+// });
 
 app.listen(PORT, () => {
   console.log(`✅ DATS running at http://localhost:${PORT}`);
